@@ -16,13 +16,16 @@ export class SearchComponent {
         console.log(response)
         if (response.length) {
           this.searchData = response
+          this.count = true
         } else {
           alert("Invalid Title")
           this.searchData = []
+          this.count = false
         }
         
       }
     )
   }
   searchData:any = []
+  count:any  = false
 }
