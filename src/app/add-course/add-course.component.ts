@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent {
-  constructor(private api: ApiService,) { }
+  constructor(private api: ApiService,private route:Router) { }
   title = ""
   description = ""
   duration = ""
@@ -21,16 +22,18 @@ export class AddCourseComponent {
         console.log(response)
         if (response.status == "success") {
           alert('Course added successfully')
-          this.title = ""
-          this.description = ""
-          this.duration = ""
-          this.date = ""
-          this.venue = ""
+          
         } else {
           alert('Error in adding course')
         }
       }
     )
+    this.route.navigate(["/"])
+    this.title = ""
+    this.description = ""
+    this.duration = ""
+    this.date = ""
+    this.venue = ""
     console.log(courseData)
   }
 
